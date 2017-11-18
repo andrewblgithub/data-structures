@@ -51,5 +51,11 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  if('should return length of list', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.length).to.equal(2);    
+  });
+
   // add more tests here to test the functionality of linkedList
 });
