@@ -56,15 +56,6 @@ var BinarySearchTree = function(value) {
   return newTree;
 };
 
-var test = BinarySearchTree(12);
-test.insert(7);
-test.insert(9);
-test.insert(4);
-var array = [];
-var func = function(value) { array.push(value); };
-test.depthFirstLog(func);
-console.log(array);
-
 /*
  * Complexity: What is the time complexity of the above functions?
  * insert - O(n)
