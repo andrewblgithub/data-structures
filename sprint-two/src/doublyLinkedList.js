@@ -80,7 +80,7 @@ console.log(newList.length);
    * addToTail - O(1)
    * removeHead - O(1)
    * contains - O(n)
-   * addToHead - 
-   * removeTail - 
+   * addToHead - O(1)
+   * removeTail - O(1)
    */
   
