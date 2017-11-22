@@ -19,7 +19,7 @@ var LinkedList = function() {
 
   list.addToHead = function(value) {
     var newNode = Node(value);
-    if(this.head === null) {
+    if (this.head === null) {
       this.head = newNode;
       this.tail = newNode;
     } else {
