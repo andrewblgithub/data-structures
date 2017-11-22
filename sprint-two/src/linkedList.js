@@ -46,12 +46,6 @@ var Node = function(value) {
   return node;
 };
 
-var newList = LinkedList();
-newList.addToTail(4)
-newList.addToTail(4)
-
-console.log(newList.length)
-
 /*
  * Complexity: What is the time complexity of the above functions?
  * addToTail - O(1)
