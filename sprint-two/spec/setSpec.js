@@ -34,6 +34,12 @@ describe('set', function() {
     set.add('Mel Gibson');
     set.add('Josh Gibson');
     expect(set.size).to.equal(2);
-  })
+  });
+
+  it('should work with any input objects', function() {
+    set.add(1);
+    set.add({a:1});
+    expect(set.size).to.equal(2);
+  });
 
 });
