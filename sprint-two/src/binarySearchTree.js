@@ -42,7 +42,6 @@ var BinarySearchTree = function(value) {
     
   newTree.depthFirstLog = function(cb) {
     var depthFirst = function (node) {
-      console.log(node.value);
       cb(node.value);
       if (node.left !== null) {
         depthFirst(node.left);
@@ -53,6 +52,24 @@ var BinarySearchTree = function(value) {
     };
     depthFirst(this);
   };
+
+  newTree.breadthFirstLog = function(cb) {
+    var queue = [];
+    queue.push(this);
+    while (queue.length > 0) {
+      if (queue[0]) {
+        cb(queue[0].value);
+      }
+      if (queue[0].left !== null) {
+        queue.push(queue[0].left);
+      }
+      if (queue[0].right !== null) {
+        queue.push(queue[0].right);
+      }
+      queue.shift();
+    }
+  };
+
   return newTree;
 };
 
@@ -61,4 +78,5 @@ var BinarySearchTree = function(value) {
  * insert - O(n)
  * contains - O(n)
  * depthFirstLog - O(n)
+ * breadthFirstLog - O(n)
  */
