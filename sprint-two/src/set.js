@@ -21,11 +21,6 @@ setPrototype.remove = function(item) {
   this.size--;
 };
 
-var newSet = Set();
-newSet.add("asdjaks");
-newSet.add('askjdaskd')
-
-console.log(newSet.size)
 /*
  * Complexity: What is the time complexity of the above functions?
  * add - O(1)
