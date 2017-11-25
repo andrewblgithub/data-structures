@@ -58,11 +58,10 @@ describe('binarySearchTree', function() {
   });
 
   it('should rebalance the root node if an insertion unbalances the tree', function() {
-    binarySearchTree.insert(6);
-    binarySearchTree.insert(7);
-    binarySearchTree.insert(8);
-    binarySearchTree.insert(9);
-    binarySearchTree.insert(10);
-    expect(binarySearchTree.balance).to.equal(1);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(1);
+    expect(binarySearchTree.balance).to.equal(0);
   });
 });

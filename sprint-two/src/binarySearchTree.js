@@ -7,32 +7,45 @@ var BinarySearchTree = function(value) {
   newTree.balance = 0;
     
   newTree.insert = function(value) {
-    var newTree = BinarySearchTree(value);
+    var newTreeInsert = BinarySearchTree(value);
     var checkInsert = function (node) {
       if (value < node.value) {
         if (node.left === null) {
-          node.left = newTree;
+          node.left = newTreeInsert;
           if (node.right === null) {
             node.balance--;
           }
         } else {
           node.balance--;
-          if (Math.abs(node.balance) > 1) {
+          node.left.balance--;
+          if (node.balance > 1 || node.balance < -1) {
             node._rebalance();
+            if (node.left === null) {
+              node.left = newTreeInsert;
+            } else {
+              checkInsert(node.left);            
+            }
+          } else {
+            checkInsert(node.left);
           }
-          checkInsert(node.left);
         }
       }
       if (value > node.value) {
         if (node.right === null) {
-          node.right = newTree;
+          node.right = newTreeInsert;
           if (node.left === null) {
             node.balance++;
+            node.right.balance++;
           }
         } else {
           node.balance++;
-          if (Math.abs(node.balance) > 1) {
+          if (node.balance > 1 || node.balance < -1) {
             node._rebalance();
+            if (node.right === null) {
+              node.right = newTreeInsert;
+            } else {
+              checkInsert(node.right);            
+            }
           }
           checkInsert(node.right);
         }
@@ -43,7 +56,34 @@ var BinarySearchTree = function(value) {
   };
 
   newTree._rebalance = function() {
-    console.log('balancing...');
+    var root = this;
+    if (root.balance === -2) {
+      if (root.left.balance === -1) {
+        root._rotateRight();
+      } else if (root.left.balance === 1) {
+        root.left._rotateLeft();
+        root._rotateRight();
+      }
+    } else if (root.balance > 1) {
+      if (root.right.balance === 1) {
+
+      } else if (root.right.balance === -1) {
+
+      }
+    }
+  };
+
+  newTree._rotateLeft = function() {
+  };
+
+  newTree._rotateRight = function() {
+    var root = Object.assign({}, this);
+    root.left = null;
+    var leftChild = this.left;
+    leftChild.right = root;
+    Object.assign(this, leftChild);
+    this.balance++;
+    this.right.balance += 2;
   };
     
   newTree.contains = function(value) {
@@ -93,6 +133,13 @@ var BinarySearchTree = function(value) {
 
   return newTree;
 };
+
+binarySearchTree = BinarySearchTree(5);
+binarySearchTree.insert(4);
+binarySearchTree.insert(3);
+console.log(binarySearchTree.balance);
+binarySearchTree.insert(2);
+// binarySearchTree.insert(1);
 
 /*
  * Complexity: What is the time complexity of the above functions?
