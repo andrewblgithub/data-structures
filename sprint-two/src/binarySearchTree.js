@@ -4,25 +4,46 @@ var BinarySearchTree = function(value) {
   newTree.left = null;
   newTree.right = null;
   newTree.size = 1;
+  newTree.balance = 0;
     
   newTree.insert = function(value) {
     var newTree = BinarySearchTree(value);
     var checkInsert = function (node) {
-      if (node.value > value) {
+      if (value < node.value) {
         if (node.left === null) {
           node.left = newTree;
+          if (node.right === null) {
+            node.balance--;
+          }
+        } else {
+          node.balance--;
+          if (Math.abs(node.balance) > 1) {
+            node._rebalance();
+          }
+          checkInsert(node.left);
         }
-        checkInsert(node.left);
       }
-      if (node.value < value) {
+      if (value > node.value) {
         if (node.right === null) {
           node.right = newTree;
+          if (node.left === null) {
+            node.balance++;
+          }
+        } else {
+          node.balance++;
+          if (Math.abs(node.balance) > 1) {
+            node._rebalance();
+          }
+          checkInsert(node.right);
         }
-        checkInsert(node.right);
       }
     };
     checkInsert(this);
     this.size++;
+  };
+
+  newTree._rebalance = function() {
+    console.log('balancing...');
   };
     
   newTree.contains = function(value) {
