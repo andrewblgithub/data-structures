@@ -57,11 +57,4 @@ describe('binarySearchTree', function() {
     expect(array).to.eql([5, 2, 7, 3, 6, 9]);
   });
 
-  it('should rebalance the root node if an insertion unbalances the tree', function() {
-    binarySearchTree.insert(4);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(1);
-    expect(binarySearchTree.balance).to.equal(0);
-  });
 });
